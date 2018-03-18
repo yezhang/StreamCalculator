@@ -47,10 +47,17 @@ InputValue.prototype.setInputValue = function (value) {
     this.triggerRules();
 }
 
+/**
+ * 只有当新的值与原有值不同时，才会出发 outputchanged 事件。
+ * @param {number} value 输出值
+ */
 InputValue.prototype.setOutputValue = function (value) {
     var oldValue = this.value;
     this.setValue(value);
-    this.outputChangedHandler(value, oldValue);
+    if(oldValue !== value){
+        this.outputChangedHandler(value, oldValue);
+    }
+    
 }
 
 InputValue.prototype.setOutputHandler = function (handler) {
@@ -130,8 +137,8 @@ function Caltor() {
  * 定义一个变量，不用显示声明
  * @param {变量名} name 
  */
-Caltor.prototype.defineInput = function(name) {
-    var inputValue = new InputValue(name, 0);
+Caltor.prototype.defineInput = function(name, initValue) {
+    var inputValue = new InputValue(name, initValue ? initValue : 0);
     this.addInput(inputValue);
 }
 
@@ -150,7 +157,10 @@ Caltor.prototype.pickInput = function(name) {
 }
 
 /**
- * 更新变量的值
+ * 更新变量的值，更新输入参数的值会自动触发联动计算。
+ * 触发联动计算的前提是，计划修改的值与当前选择的值是同一个值。
+ * 如果计划修改的值与与当前选择的值不同，则什么事都不会发生。
+ * 
  * @param {string} name 变量名称
  * @param {string} value 变量值
  */

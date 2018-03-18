@@ -1,7 +1,7 @@
 ///代码样例
 var caltor = new Caltor();
 caltor.defineInput('price');
-caltor.defineInput('count');
+caltor.defineInput('count', 1);
 caltor.defineInput('amount');
 
 caltor.defineRule('amountRule', function () {
