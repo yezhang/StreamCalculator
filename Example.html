@@ -28,16 +28,16 @@
         });
         var priceObservable = ko.observable(0);
         priceObservable.subscribe(function(newValue) {
-            calor.updateInputValue('price', newValue);
+            caltor.updateInputValue('price', newValue);
         })
         var countObservable = ko.observable(0);
         countObservable.subscribe(function(newValue) {
-            calor.updateInputValue('count', newValue);
+            caltor.updateInputValue('count', newValue);
         })
 
         var amountObservable = ko.observable(0);
         amountObservable.subscribe(function(newValue) {
-            calor.updateInputValue('amount', newValue);
+            caltor.updateInputValue('amount', newValue);
         });
         ko.applyBindings({
             price: priceObservable, 

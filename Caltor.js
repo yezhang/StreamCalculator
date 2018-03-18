@@ -104,7 +104,7 @@ Rule.prototype.markFixedInput = function(inputName) {
     return this;
 }
 
-Rule.prototype.setHandler = function (handler) {
+Rule.prototype.setExpression = function (handler) {
     if (typeof handler === 'function') {
         this.executionHandler = handler;
     }
@@ -156,7 +156,7 @@ Caltor.prototype.pickInput = function(name) {
  */
 Caltor.prototype.updateInputValue = function(name, value) {
     if(name === caltor.selection.name) {
-        caltor.selection.setInputValue(newValue);
+        caltor.selection.setInputValue(value);
     }
 }
 

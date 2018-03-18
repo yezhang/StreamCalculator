@@ -9,7 +9,7 @@ caltor.defineRule('amountRule', function () {
         .markInput('price')
         .markInput('count')
         .markOutput('amount')
-        .setHandler(function (inputFetcher, outputFetcher) {
+        .setExpression(function (inputFetcher, outputFetcher) {
             var price = inputFetcher('price');
             var count = inputFetcher('count');
 
@@ -23,7 +23,7 @@ caltor.defineRule('priceRule', function () {
         .markInput('amount')
         .markFixedInput('count')
         .markOutput('price')
-        .setHandler(function (inputFetcher, outputFetcher) {
+        .setExpression(function (inputFetcher, outputFetcher) {
             var amount = inputFetcher('amount');
             var count = inputFetcher('count');
             var price = outputFetcher('price');
