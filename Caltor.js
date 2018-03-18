@@ -165,6 +165,9 @@ Caltor.prototype.pickInput = function(name) {
  * @param {string} value 变量值
  */
 Caltor.prototype.updateInputValue = function(name, value) {
+    if(!this.inputsMap.hasOwnProperty(name)){
+        throw new Error('InputValue ' + name + ' was not defined by Caltor.')
+    }
     if(name === caltor.selection.name) {
         caltor.selection.setInputValue(value);
     }
