@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开票公式计算器</title>
+    <script type="text/javascript" src="./libs/knockout-3.4.2.debug.js"></script>
+    <script type="text/javascript" src="./Caltor.js"></script>
+    <script type="text/javascript" src="./Example.js"></script>
+</head>
+
+<body>
+    <p>数量：<input type="text" data-name="count" data-bind="textInput: count, event : {focus: inputFocused}" /></p>
+    <p>单价：<input type="text" data-name="price" data-bind="textInput: price, event : {focus: inputFocused}" /></p>
+    <p>金额：<input type="text" data-name="amount" data-bind="textInput: amount, event : {focus: inputFocused}" /></p>
+  
+    <script type="text/javascript">
+        caltor.pickInput('price').setOutputHandler(function(value, oldValue) {
+            priceObservable(value);
+        });
+        caltor.pickInput('count').setOutputHandler(function(value, oldValue) {
+            countObservable(value);
+        });
+        caltor.pickInput('amount').setOutputHandler(function(value, oldValue) {
+            amountObservable(value);
+        });
+        var priceObservable = ko.observable(0);
+        priceObservable.subscribe(function(newValue) {
+            calor.updateInputValue('price', newValue);
+        })
+        var countObservable = ko.observable(0);
+        countObservable.subscribe(function(newValue) {
+            calor.updateInputValue('count', newValue);
+        })
+
+        var amountObservable = ko.observable(0);
+        amountObservable.subscribe(function(newValue) {
+            calor.updateInputValue('amount', newValue);
+        });
+        ko.applyBindings({
+            price: priceObservable, 
+            count: countObservable,
+            amount: amountObservable,
+            inputFocused: function(data, event) {
+                var variable = event.target.dataset['name'];
+                caltor.select(variable);
+            }
+        });
+    </script>
+</body>
+
+</html>
