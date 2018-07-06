@@ -64,6 +64,12 @@ InputValue.prototype.setOutputHandler = function (handler) {
     this.outputChangedHandler = handler;
 }
 
+/**
+ * 定义一个计算规则。
+ * 一个计算规则相当于一个数学计算公式。
+ *
+ * @param {*} caltor
+ */
 function Rule(caltor) {
     var intputNamesCache = [];
     this.inputNames = intputNamesCache;
