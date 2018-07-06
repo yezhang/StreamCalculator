@@ -134,7 +134,7 @@ function Caltor() {
 }
 
 /**
- * 定义一个变量，不用显示声明
+ * 定义一个变量，不用显式声明
  * @param {变量名} name 
  */
 Caltor.prototype.defineInput = function(name, initValue) {

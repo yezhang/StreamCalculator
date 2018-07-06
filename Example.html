@@ -26,6 +26,7 @@
         caltor.pickInput('amount').setOutputHandler(function(value, oldValue) {
             amountObservable(value);
         });
+
         var priceObservable = ko.observable(0);
         priceObservable.subscribe(function(newValue) {
             caltor.updateInputValue('price', newValue);
@@ -39,6 +40,7 @@
         amountObservable.subscribe(function(newValue) {
             caltor.updateInputValue('amount', newValue);
         });
+        
         ko.applyBindings({
             price: priceObservable, 
             count: countObservable,
